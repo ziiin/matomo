@@ -9,6 +9,8 @@ The Product Changelog at **[matomo.org/changelog](https://matomo.org/changelog)*
 ### Breaking Changes
 
 * Deprecated `piwik` font was removed. Use `matomo` font instead
+* Reporting API: `showColumns` will now apply recursively and remove all columns in the result that are not found in this list, and will apply to all nested datasets. 
+* Reporting API: `hideColumns` will now apply recursively and removes those columns from the result, including any columns found in nested datasets. 
 * The JavaScript AjaxHelper does not longer support synchronous requests. All requests will be sent async instead.
 * The deprecated Platform API method `\Piwik\Plugin::getListHooksRegistered()` has been removed. Use `\Piwik\Plugin::registerEvents()` instead
 * The deprecated Platform API method `\Piwik\Piwik::doAsSuperUser()` has been removed. Use `\Piwik\Access::doAsSuperUser()` instead
