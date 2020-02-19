@@ -15,7 +15,7 @@ describe("JSTracker", function () {
         widgetizeParams = "module=Widgetize&action=iframe",
         visitorLogUrl = "?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Live&actionToWidgetize=getVisitorLog";
 
-    it("run correctly on a website and correctly track visits in the visitor log", async function () {
+    it.only("run correctly on a website and correctly track visits in the visitor log", async function () {
         await page.goto(testWebsiteUrl);
 
         // view another page
