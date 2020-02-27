@@ -63,6 +63,7 @@ class Controller extends \Piwik\Plugin\Controller
         $view->ssl = ProxyHttp::isHttps();
         $view->siteUrls = SitesManager\API::getInstance()->getSiteUrlsFromId($this->site->getId());
 
+        $view->setUseStrictReferrerPolicy(false);
         $this->outputCORSHeaders();
         return $view->render();
     }
@@ -160,6 +161,7 @@ class Controller extends \Piwik\Plugin\Controller
         $view->segment = $segmentSidebar;
         $view->segmentDescription = $this->segmentFormatter->getHumanReadable($segment, $this->idSite);
 
+        $view->setUseStrictReferrerPolicy(false);
         $this->outputCORSHeaders();
         return $view->render();
     }
