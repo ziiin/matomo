@@ -379,7 +379,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         elem = await page.jQuery('.columnDocumentation:visible', { waitFor: true });
         await page.waitFor(500);
 
-        expect(await elem.screenshot()).to.matchImage('metric_tooltip');
+        expect(await page.screenshotSelector('.columnDocumentation:visible')).to.matchImage('metric_tooltip');
     });
 
     it('should load the referrers > search engines & keywords page correctly', async function () {
