@@ -121,6 +121,8 @@ before_script:
   - ./tests/travis/setup_webserver.sh
   - ./tests/travis/install_phantomjs.sh; export PATH=$PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64/bin:$PATH;
 
+  - sudo nginx -c $PIWIK_ROOT_DIR/tests/travis/piwik_nginx.conf -t
+
   - cd tests/PHPUnit
 
 after_script:
