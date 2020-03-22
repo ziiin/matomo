@@ -122,6 +122,9 @@ before_script:
   - ./tests/travis/install_phantomjs.sh; export PATH=$PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64/bin:$PATH;
 
   - sudo nginx -c $PIWIK_ROOT_DIR/tests/travis/piwik_nginx.conf -t
+  - $HOME/.phpenv/versions/$TRAVIS_PHP_VERSION/sbin/php-fpm --fpm-config "$PIWIK_ROOT_DIR/tests/travis/php-fpm.ini" -t
+  - echo "<?php phpinfo(); ?>" >> $PIWIK_ROOT_DIR/info.php
+  - curl http://localhost/info.php
 
   - cd tests/PHPUnit
 
@@ -130,6 +133,7 @@ after_script:
   - cd $PIWIK_ROOT_DIR
 
   # output contents of files w/ debugging info to screen
+  - cat $PIWIK_ROOT_DIR/tests/travis/access.log
   - cat $PIWIK_ROOT_DIR/tests/travis/error.log
   - cat $PIWIK_ROOT_DIR/tmp/php-fpm.log
   - cat $PIWIK_ROOT_DIR/tmp/logs/matomo.log
